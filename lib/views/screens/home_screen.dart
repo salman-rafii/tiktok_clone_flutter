@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_clone_flutter/utils/constants.dart';
 import 'package:tiktok_clone_flutter/views/widgets/custom_icon.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: backgroundColor,
+        onTap: (index) {
+          setState(() {
+            pageIndex = index;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: redColor,
+        unselectedItemColor: whiteColor,
+        currentIndex: pageIndex,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
@@ -18,17 +36,17 @@ class HomeScreen extends StatelessWidget {
             tooltip: "Home",
           ),
           BottomNavigationBarItem(
-            icon: CustomIcon(),
-            label: "Home",
-            tooltip: "Home",
-          ),
-          BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
               size: 30,
             ),
             label: "Search",
             tooltip: "Search",
+          ),
+          BottomNavigationBarItem(
+            icon: CustomIcon(),
+            label: "",
+            tooltip: "Add Video",
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -48,7 +66,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(child: Text("Home Screen")),
+      body: Center(child: pages[pageIndex]),
     );
   }
 }
