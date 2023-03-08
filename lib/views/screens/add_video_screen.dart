@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tiktok_clone_flutter/utils/constants.dart';
@@ -12,8 +14,11 @@ class AddVideoScreen extends StatelessWidget {
   pickVideo(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
     if (video != null) {
-      var route =
-          MaterialPageRoute(builder: (context) => const ConfirmVideoScreen());
+      var route = MaterialPageRoute(
+          builder: (context) => ConfirmVideoScreen(
+                videoFile: File(video.path),
+                videopath: video.path,
+              ));
       Navigator.of(context).push(route);
     }
   }
