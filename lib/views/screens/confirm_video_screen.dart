@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tiktok_clone_flutter/controllers/upload_video_controller.dart';
 import 'package:tiktok_clone_flutter/utils/constants.dart';
 import 'package:tiktok_clone_flutter/views/widgets/custom_text.dart';
 import 'package:tiktok_clone_flutter/views/widgets/text_input_field.dart';
@@ -20,6 +22,8 @@ class _ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
   late VideoPlayerController controller;
   final TextEditingController songController = TextEditingController();
   final TextEditingController captionController = TextEditingController();
+  UploadVideoController uploadVideoController =
+      Get.put(UploadVideoController());
   @override
   void initState() {
     super.initState();
@@ -79,7 +83,11 @@ class _ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
                   height: 10,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => uploadVideoController.uploadVideo(
+                    songController.text,
+                    captionController.text,
+                    widget.videopath,
+                  ),
                   child: const CustomText(
                     text: "Share",
                     fontSize: 20.0,
