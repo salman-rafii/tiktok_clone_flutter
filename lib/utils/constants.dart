@@ -9,12 +9,12 @@ import 'package:tiktok_clone_flutter/views/screens/add_video_screen.dart';
 import 'package:tiktok_clone_flutter/views/screens/video_screen.dart';
 
 // pages
-const pages = [
+List pages = [
   VideoScreen(),
-  Text("Search Screen"),
-  AddVideoScreen(),
-  Text("Messages Screen"),
-  Text("Profile Screen"),
+  const Text("Search Screen"),
+  const AddVideoScreen(),
+  const Text("Messages Screen"),
+  const Text("Profile Screen"),
 ];
 final size = MediaQuery.of(Get.context!).size;
 // COLORS
