@@ -7,9 +7,11 @@ import 'package:tiktok_clone_flutter/views/screens/auth/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) {
-    Get.put(AuthController());
-  });
+  await Firebase.initializeApp().then(
+    (value) {
+      Get.put(AuthController());
+    },
+  );
   runApp(const MyApp());
 }
 
