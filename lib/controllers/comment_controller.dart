@@ -41,6 +41,7 @@ class CommentController extends GetxController {
           .collection('videos')
           .doc(_postId)
           .collection('comments')
+          
           .doc('Comment $len')
           .set(comment.toJson());
     }
