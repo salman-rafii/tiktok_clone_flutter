@@ -6,15 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok_clone_flutter/controllers/auth_controller.dart';
 import 'package:tiktok_clone_flutter/views/screens/add_video_screen.dart';
+import 'package:tiktok_clone_flutter/views/screens/profile_screen.dart';
+import 'package:tiktok_clone_flutter/views/screens/search_screen.dart';
 import 'package:tiktok_clone_flutter/views/screens/video_screen.dart';
 
 // pages
 List pages = [
   VideoScreen(),
-  const Text("Search Screen"),
+  SearchScreen(),
   const AddVideoScreen(),
-  const Text("Messages Screen"),
-  const Text("Profile Screen"),
+  const Text('Messages Screen'),
+  ProfileScreen(uid: authController.user.uid),
 ];
 final size = MediaQuery.of(Get.context!).size;
 // COLORS
